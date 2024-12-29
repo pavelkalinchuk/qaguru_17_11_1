@@ -10,20 +10,18 @@ def browser_start():
     driver_options.page_load_strategy = 'eager'
     browser.config.driver_options = driver_options
     browser.open('https://demoqa.com/automation-practice-form')
-    selenoid_capabilities = {
-        "browserName": "chrome",  # тип браузера
-        "browserVersion": "100.0",  # версия браузера
-        "selenoid:options": {  # установка разрешения на запись видео во время теста
-            "enableVNC": True,
-            "enableVideo": True
-        }
-    }
-    driver_options.capabilities.update(selenoid_capabilities)
-    driver = webdriver.Remote(  # тут указываем адрес удалённой фермы браузеров селеноида
-        command_executor=f"https://user1:1234@selenoid.autotests.cloud/wd/hub",
-        # userf1:1234@ - защита что бы все подряд не пользовались, можно и без этого запускать
-        options=driver_options
-    )
+    # selenoid_capabilities = {
+    #     "browserName": "chrome",  # тип браузера
+    #     "browserVersion": "100.0",  # версия браузера
+    #     "selenoid:options": {  # установка разрешения на запись видео во время теста
+    #         "enableVNC": True,
+    #         "enableVideo": True
+    #     }
+    # }
+    # driver_options.capabilities.update(selenoid_capabilities)
+    # driver = webdriver.Remote(f"https://user1:1234@selenoid.autotests.cloud/wd/hub", options=driver_options)
+    #
+    # browser = Browser(Config(driver))
 
     yield browser
 
